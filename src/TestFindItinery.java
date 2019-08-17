@@ -29,7 +29,7 @@ public class TestFindItinery {
         expectedResult.add("JFK");
         expectedResult.add("DTW");
         expectedResult.add("ATL");
-        assertEquals(expectedResult,fi.findItinery(tickets));
+        assertEquals(expectedResult,fi.findItinerary(tickets));
     }
     /**
      * this test case is all nodes BUT TWO have the same in-degree and out-degree:
@@ -52,7 +52,7 @@ public class TestFindItinery {
         expectedResult.add("JFK");
         expectedResult.add("DTW");
         expectedResult.add("ATL");
-        assertEquals(expectedResult,fi.findItinery(tickets));
+        assertEquals(expectedResult,fi.findItinerary(tickets));
 
 
     }

@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class FindItinery {
-    public List<String> findItinery(List<List<String>> tickets) {
+    public List<String> findItinerary(List<List<String>> tickets) {
         // build graph
         Map<String,PriorityQueue<String>> graph = new HashMap<>();
         for (List<String> ticket:tickets) {
