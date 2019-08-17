@@ -33,6 +33,6 @@ Pseudo-code
 
 [leetcode 332](https://leetcode.com/problems/reconstruct-itinerary/)
 
-[solution]()
+[solution](https://github.com/jianghoy/Inspiring-Problems/blob/master/src/FindItinery.java)
 
-[testcase]()
+[testcase](https://github.com/jianghoy/Inspiring-Problems/blob/master/src/TestFindItinery.java)
