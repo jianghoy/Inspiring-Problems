@@ -9,7 +9,7 @@ public class TreeCheck {
         }
         // for no node or one node return true
         if ((relationships == null || relationships.length == 0) && (n == 0 || n == 1)) {
-            return "S";
+            return "";
         }
         int[] ancestor = new int[n];
         Arrays.fill(ancestor, -1);
@@ -33,10 +33,10 @@ public class TreeCheck {
                 }
                 return "E1";
             }
-            if (parent.right == null) {
-                parent.right = child;
-            } else {
+            if (parent.left == null) {
                 parent.left = child;
+            } else {
+                parent.right = child;
             }
 
             if (child.parent != null) {
@@ -52,7 +52,11 @@ public class TreeCheck {
             nodeMap.put(relation[0], parent);
             nodeMap.put(relation[1], child);
         }
-        return checkOneAncestor(ancestor) == true ? "S" : "E4";
+        if (!checkOneAncestor(ancestor)) return "E4";
+        int root = findRoot(ancestor);
+        StringBuilder resultBuilder = new StringBuilder();
+        buildResult(resultBuilder,nodeMap.get(root));
+        return resultBuilder.toString();
 
     }
 
@@ -90,6 +94,27 @@ public class TreeCheck {
 
         }
         return negativeOneCount == 1;
+    }
+
+    private int findRoot(int[] ancestor) {
+        for (int x : ancestor) {
+            if (x != -1) {
+                return x;
+            }
+        }
+        return -1;
+    }
+
+    private void buildResult(StringBuilder resultBuilder, TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        resultBuilder.append('(');
+        resultBuilder.append(root.val);
+        buildResult(resultBuilder,root.left);
+        buildResult(resultBuilder,root.right);
+
+        resultBuilder.append(')');
     }
 }
 

@@ -8,14 +8,14 @@ public class TestTreeCheck {
     public void testRightCase() {
         TreeCheck tc = new TreeCheck();
         int[][] relationOne = new int[][]{{0,1}};
-        assertEquals("S",tc.treeCheck(relationOne,2));
+        assertEquals("(0(1))",tc.treeCheck(relationOne,2));
         tc.treeCheck(null,1);
         int[][] relationTwo = new int[][]{{0,1},{0,2}};
-        assertEquals("S",tc.treeCheck(relationTwo,3));
+        assertEquals("(0(1)(2))",tc.treeCheck(relationTwo,3));
         int[][] relationThree = new int[][]{{0,1},{1,2}};
-        assertEquals("S",tc.treeCheck(relationThree,3));
+        assertEquals("(0(1(2)))",tc.treeCheck(relationThree,3));
         int[][] relationFour = new int[][]{{0,1},{1,2},{0,3}};
-        assertEquals("S",tc.treeCheck(relationFour,4));
+        assertEquals("(0(1(2))(3))",tc.treeCheck(relationFour,4));
     }
     @Test
     public void testCycle() {
