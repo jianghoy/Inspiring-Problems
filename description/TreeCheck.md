@@ -1,4 +1,5 @@
 #TreeCheck
+
 Given an array of int array `relation` representing edges and int `n` representing number of vertices from `0...n`. 
 Outputs are: 
 1. Successful: its a tree: output its pre-order traversal wrapped up with brackets, e.g.:
