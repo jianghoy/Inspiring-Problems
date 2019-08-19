@@ -1,17 +1,18 @@
+import java.util.Comparator;
 import java.util.List;
 
 public class AccountMerge {
     public List<List<String>> accountsMerge(List<List<String>> accounts) {
         //1.sort list<list<String>> by name
-        accounts.sort((List<String> l1,List<String> l2) -> l1.get(0).compareTo(l2.get(0)));
+        accounts.sort(Comparator.comparing((List<String> l) -> l.get(0)));
 
         //2.sort list<string> by lexical order
-        for (List<String> account:accounts) {
+        for (List<String> account : accounts) {
             String name = account.get(0);
             account.remove(0);
-            account.sort((String s1,String s2) -> s1.compareTo(s2));
+            account.sort(Comparator.naturalOrder());
             deduplicate(account);
-            account.add(0,name);
+            account.add(0, name);
         }
 
         //3.for lists with the same name:
@@ -28,9 +29,9 @@ public class AccountMerge {
                 index++;
             } else {
                 boolean merged = false;
-                for (int i = index-1; i >= prevIndex; i--) {
-                    if (sameUser(accounts,i,index)) {
-                        mergeAccount(accounts,i,index);
+                for (int i = index - 1; i >= prevIndex; i--) {
+                    if (sameUser(accounts, i, index)) {
+                        mergeAccount(accounts, i, index);
                         merged = true;
                         index = i;
                     }
@@ -48,8 +49,8 @@ public class AccountMerge {
     private boolean sameUser(List<List<String>> accounts, int indexOne, int indexTwo) {
         List<String> accountOne = accounts.get(indexOne);
         List<String> accountTwo = accounts.get(indexTwo);
-        for (String email:accountTwo) {
-            if (isIn(email,accountOne,1,accountOne.size()-1)) {
+        for (String email : accountTwo) {
+            if (isIn(email, accountOne, 1, accountOne.size() - 1)) {
                 return true;
             }
         }
@@ -60,7 +61,7 @@ public class AccountMerge {
         int l = start;
         int r = end;
         while (l <= r) {
-            int mid = l + (r-l) / 2;
+            int mid = l + (r - l) / 2;
             if (s.equals(list.get(mid))) {
                 return true;
             } else if (s.compareTo(list.get(mid)) < 0) {
@@ -83,7 +84,7 @@ public class AccountMerge {
                 indexTwo++;
 
             } else if (listOne.get(indexOne).compareTo(listTwo.get(indexTwo)) > 0) {
-                listOne.add(indexOne,listTwo.get(indexTwo));
+                listOne.add(indexOne, listTwo.get(indexTwo));
                 indexTwo++;
             }
             indexOne++;
@@ -96,7 +97,7 @@ public class AccountMerge {
 
     private void deduplicate(List<String> list) {
         for (int i = 1; i < list.size(); i++) {
-            if (list.get(i).equals(list.get(i-1))) {
+            if (list.get(i).equals(list.get(i - 1))) {
                 list.remove(i);
                 i--;
             }
