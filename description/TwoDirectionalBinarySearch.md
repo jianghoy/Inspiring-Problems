@@ -14,5 +14,7 @@ easy to determine). In the traditional `val[mid] > target` part, we add a `XOR` 
  | F       |      T           |    F                           |     right|
  
  ## code 
- []
+ [leetcode 1095](https://leetcode.com/problems/find-in-mountain-array/)
+ 
+ [source code(not the same)](https://github.com/jianghoy/Inspiring-Problems/blob/master/src/BitonicBinarySearch.java)
  
